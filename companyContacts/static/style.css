@@ -1,0 +1,40 @@
+body {
+	margin-right: 100px;
+	margin-left: 100px; 
+}
+
+h1 {
+	text-align: center;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: "Lato Light", "Century Gothic", sans-serif;
+}
+
+#mainTabs {
+	width: 800px;
+	margin: 0 auto;
+}
+
+#mainForm {
+	width: 800px;
+	margin: 0 auto;
+}
+
+#companyContent {
+	max-height: 500px;
+	overflow-y: scroll;
+}
+
+.button {
+	float: right;
+	margin-bottom: 0px;
+}
+
+.no-bullets{
+	list-style-type: none;
+}
+
+#addForm {
+	padding-left: 0.5rem;
+}
