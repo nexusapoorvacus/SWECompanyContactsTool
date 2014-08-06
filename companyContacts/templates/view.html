@@ -1,179 +1,29 @@
-<!DOCTYPE html>
-<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
-<html lang="en">
-
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>UCB SWE Company Contacts</title>
-
-	<!-- Foundation References -->
-	<link rel="stylesheet" href="{{ url_for('static', filename = 'css/normalize.css') }}" type="text/css">
-	<link rel="stylesheet" href="{{ url_for('static', filename = 'css/foundation.css') }}" type="text/css">
-	<script src="{{ url_for('static', filename='js/vendor/modernizr.js') }}"></script>
-
-	<!-- Custom CSS References -->
-	<link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}" type="text/css">
-</head>
-
+{% extends "header.html" %}
 {% block body %}
-
 <body>
-
-	<h1 class="heading">SWE Company Contacts Web Tool</h1>
-
-	</br>
-
-	<!-- Tabs -->
-	<div id="mainTabs">
-		<ul class="tabs" data-tab>
-			<li class="tab-title active"><a href="#panel2-1">View</a></li>
-			<li class="tab-title"><a href="#panel2-2">Add</a></li>
-			<li class="tab-title"><a href="#panel2-3">Edit</a></li>
-			<li class="tab-title"><a href="#panel2-4">Email</a></li>
-		</ul>
-
-		<div class="tabs-content">
-			<div class="content active" id="panel2-1">
-				<!-- View / Generate -->
-				<div class="panel" id="mainForm">
-				<form>
-					<div class="row">
-						<div class="large-12 columns">
-							<label>Company
-								<select>
-									<option value="ALL">All</option>
-
-								</select>
-							</label>
-						</div>
-					</div>
-					<div class="row">
-						<a href="#" class="button">View</a>
-					</div>
-				</form>
-				</div>
-				<div id="companyContent">
-					{% for company in companies %}
-						<h4>{{ company.Name }} <h6>{{ company.ContactName }} &nbsp; &nbsp; &nbsp;{{ company.ContactEmail }}</h6></h4>
-					{% endfor %}
+	<h3>View</h3>
+	<div class="panel" id="mainForm">
+		<form>
+			<div class="row">
+				<div class="large-12 columns">
+					<label>Company
+						<select>
+							<option value="ALL">All</option>
+						</select>
+					</label>
 				</div>
 			</div>
-			<div class="content" id="panel2-2">
-				<div class="panel" id="mainForm">
-				<form id="addForm">
-					<div class="row">
-						<div class="large-12 columns">
-							<label>Company Name
-								<input type="text" name="compName" required/>
-							</label>
-						</div>
-						<div class="large-4 columns">
-							<label>Contact Name
-								<input type="text" name="contName" required/>
-							</label>
-						</div>
-						<div class="large-4 columns">
-							<label>Contact Email
-								<input type="text" name="contEmail" required/>
-							</label>
-						</div>
-						<div class="large-4 columns">
-							<label>Contact Phone Number
-								<input type="text" name="contPhone" required/>
-							</label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="large-12 columns">
-							<label>Description
-								<textarea name="description"></textarea>
-							</label>
-						</div>
-					</div>
-					<div class="row">
-						<table>
-							<ul class="no-bullets">
-								<tr>
-									<th>Events Participated</th>
-									<th>Years Participated <small>(separated by a comma)</small></th>
-								</tr>
-								<tr>
-									<td><input id="checkbox1" type="checkbox"><label for="checkbox1">EWI (Evening with Industry)</label></td>
-									<td><input type="text" name="ewiYears" required></td>
-								</tr>
-								<tr>
-									<td><input id="checkbox2" type="checkbox"><label for="checkbox2">SAE (Shadow an Engineer)</label></td>
-									<td><input type="text" name="saeYears" required></td>
-								</tr>
-								<tr>
-									<td><input id="checkbox3" type="checkbox"><label for="checkbox3">PDW (Professional Development Week)</label></td>
-									<td><input type="text" name="pdwYears" required></td>
-								</tr>
-								<tr>
-									<td><input id="checkbox4" type="checkbox"><label for="checkbox4">Info Session</label></td>
-									<td><input type="text" name="infoYears" required></td>
-								</tr>
-							</ul>
-						</table>
-					</div>
-					<div class="row">
-						<a href="#" class="button">Add</a>
-					</div>
-				</form>
-				</div>
+			<div class="row">
+				<a href="#" class="button">View</a>
 			</div>
-			<div class="content" id="panel2-3">
-				<form>
-					<div class="panel" id="mainForm">
-						<div class = "row">
-							<div class="large-12 columns">
-								<label>Company Name
-									<input type="text" name="compName" id="compName" required/>
-								</label>
-							</div>
-						</div>
-						<div class="row">
-							<a href="#" class="button small" onclick="viewResults()">View Companies</a>
-						</div>
-					</div>
-				</form>
-			</div>
-			<div class="content" id="panel2-4">
-				<div class="panel" id="mainForm">
-					<form>
-						<div class="large-4 columns">
-							<label>Your Email
-								<input type="text" />
-							</label>
-						</div>
-						<div class="row">
-							<div class="large-12 columns">
-								<label>Email Body
-									<textarea></textarea>
-								</label>
-							</div>
-						</div>  
-						<div class="row">
-							<div class="large-12 columns">
-								<label>
-									<textarea></textarea>
-								</label>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
+		</form>
+	</div>
+	<div id="companyContent">
+		{% for company in companies %}
+			<h4>{{ company.Name }} <h6>{{ company.ContactName }} &nbsp; &nbsp; &nbsp;{{ company.ContactEmail }}</h6></h4>
+		{% endfor %}
 	</div>
 
-
-	<script src="{{ url_for('static', filename = 'js/vendor/jquery.js') }}"></script>	
-	<script src="{{ url_for('static', filename= 'js/foundation.min.js') }}"></script>
-	<script>
-		$(document).foundation();
-	</script>
 </body>
+{% include "footer.html" %}
 {% endblock %}
-
-</html>

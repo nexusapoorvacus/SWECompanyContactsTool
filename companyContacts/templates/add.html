@@ -1,0 +1,69 @@
+{% extends "header.html" %}
+{% block body %}
+<body>
+	<h3>Add</h3>
+	<div class="panel" id="mainForm">
+		<form id="addForm">
+			<div class="row">
+				<div class="large-12 columns">
+					<label>Company Name
+						<input type="text" name="compName" required/>
+					</label>
+				</div>
+				<div class="large-4 columns">
+					<label>Contact Name
+						<input type="text" name="contName" required/>
+					</label>
+				</div>
+				<div class="large-4 columns">
+					<label>Contact Email
+						<input type="text" name="contEmail" required/>
+					</label>
+				</div>
+				<div class="large-4 columns">
+					<label>Contact Phone Number
+						<input type="text" name="contPhone" required/>
+					</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					<label>Description
+						<textarea name="description"></textarea>
+					</label>
+				</div>
+			</div>
+			<div class="row">
+				<table>
+					<ul class="no-bullets">
+						<tr>
+							<th>Events Participated</th>
+							<th>Years Participated <small>(separated by a comma)</small></th>
+						</tr>
+						<tr>
+							<td><input id="checkbox1" type="checkbox"><label for="checkbox1">EWI (Evening with Industry)</label></td>
+							<td><input type="text" name="ewiYears" required></td>
+						</tr>
+						<tr>
+							<td><input id="checkbox2" type="checkbox"><label for="checkbox2">SAE (Shadow an Engineer)</label></td>
+							<td><input type="text" name="saeYears" required></td>
+						</tr>
+						<tr>
+							<td><input id="checkbox3" type="checkbox"><label for="checkbox3">PDW (Professional Development Week)</label></td>
+							<td><input type="text" name="pdwYears" required></td>
+						</tr>
+						<tr>
+							<td><input id="checkbox4" type="checkbox"><label for="checkbox4">Info Session</label></td>
+							<td><input type="text" name="infoYears" required></td>
+						</tr>
+					</ul>
+				</table>
+			</div>
+			<div class="row">
+				<a href="#" class="button">Add</a>
+			</div>
+		</form>
+	</div>
+</body>
+{% include "footer.html" %}
+{% endblock %}

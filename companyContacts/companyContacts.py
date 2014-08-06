@@ -49,15 +49,31 @@ def connect_db():
 
 ################ Views ################
 @app.route('/')
-def homepage():
+def index():
+	return render_template('index.html')
+
+@app.route('/view')
+def view():
 	current = g.db.execute('select Name, ContactName, ContactEmail, ContactPhoneNumber, Description from Company')
 	companies = [dict(Name=row[0], ContactName=row[1], ContactEmail=row[2], ContactPhoneNumber=row[3], Description=row[4]) for row in current.fetchall()]
 	return render_template('view.html', companies = companies)
 
-################ Helper ################
+@app.route('/add')
+def add():
+	return render_template('add.html')
+
+@app.route('/edit')
+def edit():
+	return render_template('edit.html')
+
+@app.route('/email')
+def email():
+	return render_template('email.html')
+
 @app.route('/update')
-def populateDB():
-	wb = open_workbook('/Users/adornadula/Documents/other/SWE/companyContacts/masterSpreadsheet.xlsx')
+def update():
+	init_db()
+	wb = open_workbook('/Users/adornadula/Documents/other/SWE/masterSpreadsheet.xlsx')
 	for s in wb.sheets():
 		for row in range(s.nrows):
 			values = []
@@ -74,7 +90,7 @@ def populateDB():
 
 			g.db.execute('insert into Company (Name, ContactName, ContactEmail, ContactPhoneNumber, Description) values (?, ?, ?, ?, ?)', [companyName, contactName, contactEmail, contactPhone, notes])
 			g.db.commit()
-	return redirect(url_for('homepage'))
+	return redirect(url_for('view'))
 
 ################ Other ################
 

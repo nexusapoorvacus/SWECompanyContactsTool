@@ -1,0 +1,21 @@
+{% extends "header.html" %}
+{% block body %}
+<body>
+	<h3>Edit</h3>
+	<div class="panel" id="mainForm">
+		<form>
+			<div class = "row">
+				<div class="large-12 columns">
+					<label>Company Name
+						<input type="text" name="compName" id="compName" required/>
+					</label>
+				</div>
+			</div>
+			<div class="row">
+				<a href="#" class="button small" onclick="viewResults()">View Companies</a>
+			</div>
+		</form>
+	</div>
+</body>
+{% include "footer.html" %}
+{% endblock %}

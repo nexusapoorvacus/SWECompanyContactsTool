@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>UCB SWE Company Contacts</title>
+
+	<!-- Foundation References -->
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'css/normalize.css') }}" type="text/css">
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'css/foundation.css') }}" type="text/css">
+	<script src="{{ url_for('static', filename='js/vendor/modernizr.js') }}"></script>
+
+	<!-- Custom CSS References -->
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}" type="text/css">
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'css/foundation-icons.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'css/foundation-icons.eot') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'css/foundation-icons.svg') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'css/foundation-icons.ttf') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'css/foundation-icons.woff') }}" />
+</head>
+
+<a href="{{ url_for('index') }}"><h1 class="heading">SWE Company Contacts Web Tool</h1></a>
+
+</br>
+
+<div class="icon-bar five-up">
+  <a class="item" href="{{ url_for('view') }}">
+    <i class="fi-results"></i>
+    <label>View</label>
+  </a>
+  <a class="item" href="{{ url_for('add') }}">
+    <i class="fi-plus"></i>
+    <label>Add</label>
+  </a>
+  <a class="item" href="{{ url_for('edit') }}">
+    <i class="fi-pencil"></i>
+    <label>Edit</label>
+  </a>
+  <a class="item" href="{{ url_for('email') }}">
+    <i class="fi-mail"></i>
+    <label>Email</label>
+  </a>
+  <a class="item" href="{{ url_for('update') }}">
+    <i class="fi-refresh"></i>
+    <label>Update</label>
+  </a>
+</div>
+
+</br>
+</br>
+</br>
+
+{% block body %}{% endblock %}
