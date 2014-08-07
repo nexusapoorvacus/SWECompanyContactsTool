@@ -1,35 +1,35 @@
 {% extends "header.html" %}
 {% block body %}
 <body>
-	<h3>Add</h3>
+	<h3>Edit</h3>
 	<div class="panel" id="mainForm">
-		<form id="addForm" action="{{ url_for('addAction') }}" method=post>
+		<form id="addForm" action="{{ url_for('saveEdit', cID = editResults['CompanyID']) }}" method=post>
 			<div class="row">
 				<div class="large-12 columns">
 					<label>Company Name
-						<input type="text" name="compName" required/>
+						<input type="text" name="compName"  value= "{{ editResults['Name'] }}" required/>
 					</label>
 				</div>
 				<div class="large-4 columns">
 					<label>Contact Name
-						<input type="text" name="contName" required/>
+						<input type="text" name="contName" value= "{{ editResults['ContactName'] }}" required/>
 					</label>
 				</div>
 				<div class="large-4 columns">
 					<label>Contact Email
-						<input type="text" name="contEmail" required/>
+						<input type="text" name="contEmail" value= "{{ editResults['ContactEmail'] }}" required/>
 					</label>
 				</div>
 				<div class="large-4 columns">
 					<label>Contact Phone Number
-						<input type="text" name="contPhone"/>
+						<input type="text" name="contPhone" value= "{{ editResults['ContactPhoneNumber'] }}"/>
 					</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="large-12 columns">
 					<label>Description
-						<textarea name="description"></textarea>
+						<textarea name="description" value= "{{ editResults['Description'] }}"></textarea>
 					</label>
 				</div>
 			</div>

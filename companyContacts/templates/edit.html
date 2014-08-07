@@ -2,8 +2,10 @@
 {% block body %}
 <body>
 	<h3>Edit</h3>
+
+	<h5 class="instructions">Enter the name of the company you would like to edit below and click "Edit"</h5>
 	<div class="panel" id="mainForm">
-		<form>
+		<form action="{{ url_for('editAction') }}" method=post>
 			<div class = "row">
 				<div class="large-12 columns">
 					<label>Company Name
@@ -12,10 +14,17 @@
 				</div>
 			</div>
 			<div class="row">
-				<a href="#" class="button small" onclick="viewResults()">View Companies</a>
+				<input type="submit" class="button" value="Edit">
 			</div>
 		</form>
 	</div>
+
+	<div id="editResults">
+		{% for company in editResults %}
+			<a href= "{{ url_for('editComp',  cID = company.CompanyID) }}"><h4>{{ company.Name }} <h6>{{ company.ContactName }} &nbsp; &nbsp; &nbsp;{{ company.ContactEmail }}</h6></h4></a>
+		{% endfor %}
+	</div>
+
 </body>
 {% include "footer.html" %}
 {% endblock %}
