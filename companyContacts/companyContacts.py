@@ -14,8 +14,8 @@ DATABASE = 'cc.db'
 DEBUG = True
 SECRET_KEY = 'development key'
 
-USERNAME = 'admin'
-PASSWORD = 'default'
+USERNAME = 'ucbSWE2014'
+PASSWORD = 'SoSWEet'
 
 workbook = open_workbook('/Users/adornadula/Perforce/ApoorvaPerforceWorkspace/ficds/OverallScan_detailed_report.xls')
 
@@ -52,8 +52,14 @@ def connect_db():
 
 
 ################ Views ################
+@app.route('/login')
+def login():
+	return render_template('login.html')
+
 @app.route('/')
 def index():
+	if not session.get("logged_in"):
+		return redirect(url_for('login'))
 	return render_template('index.html')
 
 @app.route('/view')
@@ -107,6 +113,21 @@ def editComp(cID):
 
 
 ################ Action ################
+@app.route('/loginAction', methods=['POST'])
+def loginAction():
+	if session.get("logged_in"):
+		return redirect(url_for('index'))
+	else:
+		inputUsername = request.form['username']
+		inputPassword = request.form['password']
+
+		if inputUsername == USERNAME and inputPassword == PASSWORD:
+			session['logged_in'] = True
+			return redirect(url_for('index'))
+		else:
+			return redirect(url_for('login'))
+
+
 @app.route('/addAction', methods=['POST'])
 def addAction():
 	companyName = request.form["compName"]
